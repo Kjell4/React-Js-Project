@@ -5,17 +5,23 @@ import "./App.css";
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
 
+  const handleClear = () => setSearchQuery("");
+
   return (
     <div className="app">
-      <h1>Vacancies</h1>
+      <h1 className="app-title">Vacancies</h1>
 
-      <input
-        type="text"
-        placeholder="Search by title..."
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        className="search-input"
-      />
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search by title"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="search-input"
+        />
+
+        <button onClick={handleClear} className="clear-btn"> Clear </button>
+      </div>
 
       <JobList searchQuery={searchQuery} />
     </div>
@@ -23,3 +29,4 @@ function App() {
 }
 
 export default App;
+
